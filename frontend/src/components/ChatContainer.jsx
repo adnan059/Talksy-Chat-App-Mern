@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { useChatStore } from "./../store/useChatStore";
 import ChatHeader from "./ChatHeader";

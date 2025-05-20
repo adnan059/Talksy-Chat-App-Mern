@@ -66,12 +66,28 @@ const login = async (req, res, next) => {
 };
 
 // logout
+// const logout = async (req, res, next) => {
+//   try {
+//     res
+//       .status(200)
+//       .cookie("jwt", "", { maxAge: 0 })
+//       .json({ message: "logged out successfully" });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 const logout = async (req, res, next) => {
   try {
     res
       .status(200)
-      .cookie("jwt", "", { maxAge: 0 })
-      .json({ message: "logged out successfully" });
+      .clearCookie("jwt", {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+      })
+      .json({ message: "Logged out successfully" });
   } catch (error) {
     next(error);
   }
