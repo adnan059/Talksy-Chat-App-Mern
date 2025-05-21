@@ -78,6 +78,7 @@ const login = async (req, res, next) => {
 // };
 
 const logout = async (req, res, next) => {
+  console.log("Environment ==>", process.env.NODE_ENV);
   try {
     res
       .status(200)
